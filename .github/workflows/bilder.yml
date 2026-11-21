@@ -1,0 +1,31 @@
+name: Leistungsbilder laden
+on:
+  push:
+    branches: [vorschau]
+    paths: ['img/quellen.txt']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bilder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Werkzeuge installieren
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq webp imagemagick
+      - name: Bilder herunterladen und optimieren
+        run: |
+          set -e
+          mkdir -p img
+          while read -r name url; do
+            [ -z "$name" ] && continue
+            curl -fsSL -A "Mozilla/5.0 (X11; Linux x86_64)" -o "/tmp/$name.src" "$url"
+            convert "/tmp/$name.src" -background white -flatten -resize 900x600^ -gravity center -extent 900x600 -strip "/tmp/$name.png"
+            cwebp -quiet -q 78 "/tmp/$name.png" -o "img/$name.webp"
+            ls -l "img/$name.webp"
+          done < img/quellen.txt
+      - name: Bilder speichern
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Leistungsbilder von Pixabay laden
+          file_pattern: 'img/*.webp'
