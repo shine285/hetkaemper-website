@@ -1,6 +1,0 @@
-omnichannel https://cdn.pixabay.com/photo/2023/10/09/07/23/industry-8303482_1280.jpg
-chatbot https://cdn.pixabay.com/photo/2023/11/19/06/05/handshake-8398041_1280.jpg
-voicebot https://cdn.pixabay.com/photo/2023/07/20/10/28/ai-generated-8139015_1280.jpg
-ki https://cdn.pixabay.com/photo/2025/10/17/03/59/artificial-intelligence-9899127_1280.jpg
-servicecenter https://cdn.pixabay.com/photo/2023/05/27/19/15/call-center-8022155_1280.jpg
-vergabe https://cdn.pixabay.com/photo/2024/06/02/08/13/signature-8803700_1280.png
